@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.BookMapper">
+
+    <resultMap id="map1" type="book">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="writer" column="writer"></result>
+        <result property="publishe" column="publishe"></result>
+        <result property="press" column="press"></result>
+        <association property="user" resultMap="user"></association>
+    </resultMap>
+    <resultMap id="user" type="User">
+        <id property="id" column="uid"></id>
+        <result property="name" column="uname"></result>
+    </resultMap>
+    <select id="selectBillList" resultMap="map1">
+        select * from book
+    </select>
+    <select id="selectBill2" resultType="book">
+        select * from book
+    </select>
+    <select id="selectById" resultType="book">
+        select * from book where id = #{id}
+    </select>
+    <insert id="insertBook" parameterType="book">
+        insert into book (name,writer,publishe,press) values (#{name},#{writer},#{publishe},0);
+    </insert>
+    <delete id="deleteBook">
+        delete from book where id = #{id}
+    </delete>
+    <update id="updateBook" parameterType="book">
+        update book set name = #{name},writer = #{writer} ,publishe = #{publishe} where id = #{id};
+    </update>
+    <insert id="insertBorrow">
+        insert into borrow (userId,bookId) values (#{id}.#{user});
+    </insert>
+    <update id="updatePress" parameterType="book">
+        update book set press = #{1};
+    </update>
+</mapper>
