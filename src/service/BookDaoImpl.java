@@ -15,15 +15,17 @@ public class BookDaoImpl implements BookDao {
     @Autowired
     BookMapper bookMapper;
 
+
     @Override
-    public List<Book> selectBillList() {
-        return bookMapper.selectBillList ();
+    public List<Book> selectBillList(Book book) {
+        return bookMapper.selectBillList (book);
     }
 
     @Override
-    public List<Book> selectBill2() {
-        return bookMapper.selectBill2 ();
+    public List<Book> selectBill2(Book book) {
+        return bookMapper.selectBill2 (book);
     }
+
 
     @Override
     public Book selectById(Integer id) {

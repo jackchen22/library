@@ -11,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pojo.Borrow;
-import pojo.User;
 import service.BookDao;
 
 import java.awt.print.Book;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,17 +23,17 @@ public class Conteroller2 {
   @Autowired
     BookDao bookDao;
  @RequestMapping("/billList.action")
-public ModelAndView billList(){
+public ModelAndView billList(Book book){
    ModelAndView mav=new ModelAndView ();
-   List<Book> bookList=bookDao.selectBillList ();
-   mav.addObject("bookList",bookList);
+   List<Book> books=bookDao.selectBillList (book);
+   mav.addObject("book",book);
    mav.setViewName("billList");
    return mav;
  }
   @RequestMapping("/bll2.action")
-  public ModelAndView bill2(){
+  public ModelAndView bill2(Book book){
     ModelAndView mav=new ModelAndView();
-    List<Book> books = bookDao.selectBill2();
+    List<Book> books = bookDao.selectBill2(book);
     mav.addObject("books",books);
     mav.setViewName("bill2");
     return mav;
@@ -58,17 +56,17 @@ public ModelAndView billList(){
   public ModelAndView insertBook(Book book){
     ModelAndView mav=new ModelAndView();
     bookDao.insertBook(book);
-    List<Book> billList = bookDao.selectBillList();
+    List<Book> billList = bookDao.selectBillList(book);
     mav.addObject("billList",billList);
     mav.setViewName("billList");
     return mav;
   }
   @RequestMapping("/deleteBook.action")
-  public ModelAndView deleteBook(String id) {
+  public ModelAndView deleteBook(Book id) {
     ModelAndView mav = new ModelAndView();
-    Integer ID = Integer.parseInt(id);
+    Integer ID = Integer.parseInt(String.valueOf (id));
     bookDao.deleteBook(ID);
-    List<Book> bookList = bookDao.selectBillList();
+    List<Book> bookList = bookDao.selectBillList(id);
     mav.addObject("bookList",bookList);
     mav.setViewName("billList");
     return mav;
@@ -85,7 +83,7 @@ public ModelAndView billList(){
   public ModelAndView update(Book book){
     ModelAndView mav = new ModelAndView();
     bookDao.updateBook(book);
-    List<Book> billList = bookDao.selectBillList();
+    List<Book> billList = bookDao.selectBillList(book);
     mav.addObject("billList",billList);
     mav.setViewName("billList");
     return mav;

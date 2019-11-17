@@ -59,15 +59,15 @@ public class Conteroller1 {
         return mav;
     }
     @RequestMapping("/userUpdata.action")
-    public String updateUser(User user,HttpServletRequest request,Model model){
+    public ModelAndView updateUser(User user,HttpServletRequest request,Model model)throws Exception{
+        ModelAndView mav=new ModelAndView ();
+        boolean update=userDao.update (user);
         if(userDao.update(user)){
-            user=userDao.selectByname (user.getName ());
-            request.setAttribute("user",user);
-            model.addAttribute("user",user);
-            return "redirect:userList";
+            mav.setViewName ("redirect:userList.action");
         }else{
-            return "error";
+            mav.setViewName ("userUpdate.action");
         }
+        return mav;
     }
 
 

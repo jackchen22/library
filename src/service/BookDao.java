@@ -8,8 +8,8 @@ import java.awt.print.Book;
 import java.util.List;
 
 public interface BookDao {
-    public List<Book> selectBillList();
-    public List<Book> selectBill2();
+    public List<Book> selectBillList(Book book);
+    public List<Book> selectBill2(Book book);
     public Book selectById(Integer id);
     public void insertBook(Book book);
     public void insertBorrow(Borrow borrow);
