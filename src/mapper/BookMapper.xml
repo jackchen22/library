@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.BookMapper">
 
-    <resultMap id="map1" type="book">
-        <id property="id" column="id"></id>
-        <result property="name" column="name"></result>
+    <resultMap id="map1" type="Book">
+        <id property="bookid" column="bookid"></id>
+        <result property="bookname" column="bookname"></result>
         <result property="writer" column="writer"></result>
         <result property="publishe" column="publishe"></result>
         <result property="press" column="press"></result>
@@ -19,25 +19,25 @@
     <select id="selectBillList" resultMap="map1">
         select * from book
     </select>
-    <select id="selectBill2" resultType="book">
+    <select id="selectBill2" resultType="Book">
         select * from book
     </select>
-    <select id="selectById" resultType="book">
-        select * from book where id = #{id}
+    <select id="selectById" resultType="Book">
+        select * from book where bookname = #{0} and writer=#{1}
     </select>
-    <insert id="insertBook" parameterType="book">
-        insert into book (name,writer,publishe,press) values (#{name},#{writer},#{publishe},0);
+    <insert id="insertBook" parameterType="Book">
+        insert into book (bookname,writer,publishe,press) values (#{bookname},#{writer},#{publishe},#{press});
     </insert>
     <delete id="deleteBook">
         delete from book where id = #{id}
     </delete>
-    <update id="updateBook" parameterType="book">
-        update book set name = #{name},writer = #{writer} ,publishe = #{publishe} where id = #{id};
+    <update id="updateBook" parameterType="Book" >
+        update book set bookname = #{bookname},writer = #{writer},publishe = #{publishe} where bookid = #{bookid};
     </update>
-    <insert id="insertBorrow">
-        insert into borrow (userId,bookId) values (#{id}.#{user});
+    <insert id="insertBorrow" parameterType="Borrow">
+        insert into borrow (userid,bookid) values (#{bookid}.#{userid});
     </insert>
-    <update id="updatePress" parameterType="book">
-        update book set press = #{1};
+    <update id="updatePress" parameterType="Book" >
+        update book set press = #{1} where id=#{id};
     </update>
 </mapper>

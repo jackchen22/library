@@ -46,7 +46,7 @@
             <c:forEach var="user" items="${pageInfo.list}">
                 <tr>
                     <td height="23">${user.id}</td>
-                    <td><a href="<%=request.getContextPath()%>/userView.action" name="search">${user.name}</a></td>
+                    <td><a href="<%=request.getContextPath()%>/userUpdata.action" name="search">${user.name}</a></td>
                     <td>${user.account}</td>
                     <td>${user.sex}</td>
                     <td>${user.date}</td>

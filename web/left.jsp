@@ -22,7 +22,7 @@
 		</a>
 		</li>
 
-		<li><a href="<%=request.getContextPath()%>/bll2.action" target="mainFrame"><img
+		<li><a href="<%=request.getContextPath()%>/bill2.action" target="mainFrame"><img
 				src="images/btn_jieyue.gif" />
 		</a>
 		</li>

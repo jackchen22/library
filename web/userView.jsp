@@ -54,7 +54,7 @@
                     <input type="submit" id="update" name="update" value="修改" class="input-button">
                     <input type="hidden" id="userId" name="hiddenName" value="<c:out value="${user.id}"></c:out>">
                 </form>
-				<form action="/Library/servlet?flag=userDeleteList" method="post" style="float: left">
+				<form action="/deleteUser.action" method="post" style="float: left">
                     <input type="submit" id="del" name="" value="删除" class="input-button">
                     <input type="hidden" id="userId1" name="hiddenName" value="<c:out value="${user.id}"></c:out>">
                 </form>

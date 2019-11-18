@@ -10,32 +10,33 @@
 	<div class="optitle clearfix">
 		<div class="title">图书管理&gt;&gt;</div>
 	</div>
-	<form id="form1" name="form1" method="post" action="/insertBook.action">
+	<form id="form1" name="form1" method="post" action="<%=request.getContextPath()%>/insertBook.action">
 		<input type="hidden" name="method" value="add">
 		<div class="content">
 			<table class="box">
 				<tbody><tr>
 					<td class="field">书籍名称：</td>
-					<td><input type="text" name="name" class="text" id="productName" value=""> <font color="red">*</font><font color="red" id="productName_span"></font></td>
+					<td><input type="text" name="bookname" class="text" id="productName" value=""> <font color="red">*</font><font color="red" id="productName_span"></font></td>
 				</tr>
 				<tr>
 					<td class="field">作者：</td>
 					<td><input type="text" name="writer" class="text" id="productUnit" value=""> <font color="red">*</font><font color="red" id="productUnit_span"></font></td>
 				</tr>
-				<tr>
-					<td class="field">出版社：</td>
-					<td>
-						<select name="publishe" id="proId">
-							<option value="5">中华出版社</option>
-							<option value="7">清华出版社</option>
-							<option value="6">成光出版社</option>
-						</select>
-						<font color="red">*</font><font color="red" id="proId_span"></font>
-					</td>
-				</tr>
+				<%--<tr>--%>
+					<%--<td class="field">出版社：</td>--%>
+					<%--&lt;%&ndash;<td>&ndash;%&gt;--%>
+						<%--&lt;%&ndash;<select name="publishe" id="proId">&ndash;%&gt;--%>
+							<%--&lt;%&ndash;<option value="5">中华出版社</option>&ndash;%&gt;--%>
+							<%--&lt;%&ndash;<option value="7">清华出版社</option>&ndash;%&gt;--%>
+							<%--&lt;%&ndash;<option value="6">成光出版社</option>&ndash;%&gt;--%>
+						<%--&lt;%&ndash;</select>&ndash;%&gt;--%>
+						<%--&lt;%&ndash;<font color="red">*</font><font color="red" id="proId_span"></font>&ndash;%&gt;--%>
+					<%--&lt;%&ndash;</td>&ndash;%&gt;--%>
+				<%--</tr>--%>
 				<tr>
 					<td class="field">是否借出：</td>
-					<td><input type="radio" name="press" value="1">是<input type="radio" name="payed" checked="" value="0">否</td>
+					<td><input type="text" name="press"  value="1">是
+						<input type="text" name="payed" checked="true"  value="0">否</td>
 				</tr>
 				</tbody></table>
 		</div>

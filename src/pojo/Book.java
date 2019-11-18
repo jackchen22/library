@@ -1,27 +1,27 @@
 package pojo;
 
-public class book {
-    Integer id;
-    String name;
+public class Book {
+    Integer bookid;
+    String bookname;
     String writer;
     String publishe;
     String press;
     User user;
 
-    public Integer getId() {
-        return id;
+    public Integer getBookid() {
+        return bookid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBookid(Integer bookid) {
+        this.bookid = bookid;
     }
 
-    public String getName() {
-        return name;
+    public String getBookname() {
+        return bookname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBookname(String bookname) {
+        this.bookname = bookname;
     }
 
     public String getWriter() {
@@ -58,9 +58,9 @@ public class book {
 
     @Override
     public String toString() {
-        return "book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "Book{" +
+                "bookid=" + bookid +
+                ", bookname='" + bookname + '\'' +
                 ", writer='" + writer + '\'' +
                 ", publishe='" + publishe + '\'' +
                 ", press='" + press + '\'' +

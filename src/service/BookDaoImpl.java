@@ -5,7 +5,7 @@ import mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
+import pojo.Book;
 import java.util.List;
 
 
@@ -26,10 +26,9 @@ public class BookDaoImpl implements BookDao {
         return bookMapper.selectBill2 (book);
     }
 
-
     @Override
-    public Book selectById(Integer id) {
-        return bookMapper.selectById (id);
+    public List<Book> selectById(String bookname, String writer) {
+        return bookMapper.selectById (bookname,writer);
     }
 
     @Override
@@ -43,17 +42,15 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void updatePress(Book book) {
-        bookMapper.updateBook(book);
-    }
-
-    @Override
     public void deleteBook(Integer id) {
-bookMapper.deleteBook (id);
+        bookMapper.deleteBook (id);
     }
 
     @Override
-    public void updateBook(Book book) {
-bookMapper.updateBook (book);
+    public void updateBook(Book book) { bookMapper.updateBook (book);}
+
+    @Override
+    public void updatePress(Book book) {
+        bookMapper.updatePress(book);
     }
 }

@@ -33,7 +33,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public boolean update(User user) {
-        return userMapper.update(user);
+    public boolean userupdate(User user) {
+        return userMapper.userupdate (user);
     }
+    @Override
+    public void deleteUser(Integer id) { userMapper.deleteUser(id); }
+
+    @Override
+    public void pwdUpdate(User user) { userMapper.pwdUpdate(user);}
 }

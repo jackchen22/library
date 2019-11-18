@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td class="field">书籍名称：</td>
-				<td>${bill.name}</td>
+				<td>${bill.bookname}</td>
 			</tr>
 			<tr>
 				<td class="field">作者：</td>
@@ -41,7 +41,7 @@
 	</div>
 	<div class="buttons">
 		<div style="float: left;width: 100px">
-			<form action="<%=request.getContextPath()%>/billUpdate.action" method="post">
+			<form action="<%=request.getContextPath()%>/billUpdate.jsp" method="post">
 				<input type="hidden" name="id" value="${bill.id}">
 				<input type="submit" name="update" id="update" value="修改" class="input-button">
 			</form>

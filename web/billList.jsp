@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>图书管理系统-图书管理</title>
     <link type="text/css" rel="stylesheet" href="css/style.css">
-    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <div class="menu">
@@ -13,13 +13,13 @@
         <tbody>
         <tr>
             <td>
-                <form method="post" action="<%=request.getContextPath()%>/billList.action">
+                <form method="post" action="<%=request.getContextPath()%>/billView.action">
                     <input name="method" value="query" class="input-text" type="hidden">
-                    书籍名称：<input name="productName" class="input-text" type="text" value="">
-                    作者：    <input name="proName" class="input-text" type="text" value="">
-                    是否借出：<input type="radio" name="payed" value="1">是
-                              <input type="radio" name="payed" value="0">否
-                              <input value="查 询" type="submit">
+                    书籍名称：<input name="bookname" class="input-text" type="text" value="">
+                    作者：    <input name="writer" class="input-text" type="text" value="">
+                    <%--是否借出：<input type="radio" name="payed" value="1">是--%>
+                              <%--<input type="radio" name="payed" value="0">否--%>
+                              <input name="select"value="查 询" type="submit">
                 </form>
             </td>
         </tr>
@@ -29,7 +29,7 @@
 <div class="main">
     <div class="optitle clearfix">
         <em>
-            <form action="<%=request.getContextPath()%>/billAdd.action" method="post">
+            <form action="<%=request.getContextPath()%>/billAdd.jsp" method="post">
                 <input value="添加图书" class="input-button" type="submit"></form>
 
         </em>
@@ -51,35 +51,35 @@
                 <td width="100">
                     <div class="STYLE1" align="center">出版社</div>
                 </td>
-                <td width="100">
-                    <div class="STYLE1" align="center">是否借出</div>
-                </td>
                 <%--<td width="100">--%>
-                    <%--<div class="STYLE1" align="center">图书管理</div>--%>
+                    <%--<div class="STYLE1" align="center">是否借出</div>--%>
                 <%--</td>--%>
+                <td width="100">
+                    <div class="STYLE1" align="center">图书管理</div>
+                </td>
                 <td width="100">
                     <div class="STYLE1" align="center">借阅人</div>
                 </td>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="bill" items="${billList}">
+            <c:forEach var="bill" items="${pageInfo.list}">
                 <tr>
-                    <td height="23">${bill.id}</td>
-                    <td><a href="#" name="search">${bill.name}</a></td>
+                    <td height="23">${bill.bookid}</td>
+                    <td><a href="#" name="search">${bill.bookname}</a></td>
                     <td>${bill.writer}</td>
                     <td>${bill.publishe}</td>
                     <td>${bill.press}</td>
-                    <td collapse=2>
+                    <td collapse=1>
                         <em>
                             <form action="<%=request.getContextPath()%>/deleteBook.action" method="post">
-                                <input type="hidden" value="${bill.id}" name="id">
+                                <input type="hidden" value="<c:out value="${bill.bookid}"></c:out>" name="bookid">
                                 <input name="deleteBill" value="删除" class="input-button" type="submit">
                             </form>
                         </em>
                         <em>
-                            <form action="<%=request.getContextPath()%>/billUpdate.action" method="post">
-                                <input type="hidden" name="id" value="${bill.id}">
+                            <form action="<%=request.getContextPath()%>/billUpdate.jsp" method="post">
+                                <input type="hidden" name="bookid" value="${bill.bookid}">
                                 <input name="updateBill" value="修改" class="input-button" type="submit">
                             </form>
                         </em>

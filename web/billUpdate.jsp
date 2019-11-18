@@ -11,15 +11,16 @@
 		<div class="title">图书管理&gt;&gt;</div>
 	</div>
 	<form id="form1" name="form1" method="post" action="<%=request.getContextPath()%>/updateBook.action">
+		<c:forEach var="bill" items="${pageInfo.list}">
 		<input type="hidden" name="method" value="update">
-		<input type="hidden" name="billId" id="billId" value="6">
+		<input type="text" name="bookid" id="billId" value="${bill.bookid}">
 		<div class="content">
 			<table class="box">
 				<tbody><tr>
 					<td class="field">书籍名称：</td>
 					<td>
-						<input type="hidden" name="id" value="${bill.id}">
-						<input type="text" name="name" class="text" id="productName" value="${bill.name}"> <font color="red">*</font><font color="red" id="productName_span"></font>
+						<input type="hidden" name="bookid" value="">
+						<input type="text" name="bookname" class="text" id="productName" value="${bill.bookname}"> <font color="red">*</font><font color="red" id="productName_span"></font>
 					</td>
 				</tr>
 				<tr>
@@ -33,7 +34,8 @@
 						<font color="red">*</font><font color="red" id="proId_span"></font>
 					</td>
 				</tr>
-				</tbody>
+				</tbody>	</c:forEach>
+
 			</table>
 		</div>
 		<div class="buttons">

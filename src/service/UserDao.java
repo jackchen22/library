@@ -9,6 +9,7 @@ public interface UserDao {
     public List<User> selectUser(User user);
     public User selectByname(String name);
     public void insertUser(User user);
-    public boolean update(User user);
-
+    public boolean userupdate(User user);
+    public void deleteUser(Integer id);
+    public void pwdUpdate(User user);
 }

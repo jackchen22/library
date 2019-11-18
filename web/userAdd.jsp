@@ -54,7 +54,8 @@
 				<tr>
 					<td class="field">用户权限：</td>
 
-					<td><input type="radio" name="root" value="1">管理员<input type="radio" name="root" value="2" checked="true">普通用户
+					<td><input type="radio" name="root" value="1">管理员
+						<input type="radio" name="root" value="2" checked="true">普通用户
 					<input type="radio" name="root" value="3">经理</td>
 				</tr>
 			</tbody></table>

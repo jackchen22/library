@@ -18,7 +18,6 @@
     <select id="login" parameterType="user" resultMap="UserMap">
         select * from user where name= #{name} and password=#{password}
     </select>
-
     <select id="selectUser" resultType="User">
         select * from user
         <where>
@@ -30,10 +29,14 @@
     <select id="selectByname" resultType="User">
          select * from user where name = #{name}
     </select>
-    <update id="update" parameterType="User">
+    <update id="userupdate" parameterType="User">
         update user set name=#{name},account=#{account},password=#{password},firmpassword=#{firmpassword},sex=#{sex},date=#{date},tel=#{tel},address=#{address},root=#{root} where id=#{id}
     </update>
     <insert id="insertUser" parameterType="User">
         insert into user(id,name,account,password,firmpassword,sex,date,tel,address,root) values(#{id},#{name},#{account},#{password},#{firmpassword},#{sex},#{date},#{tel},#{address},#{root});
     </insert>
+    <update id="pwdUpdate" parameterType="User">
+        update user set password=#{newpassword} where id = #{id};
+    </update>
+
 </mapper>
